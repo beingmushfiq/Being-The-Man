@@ -82,7 +82,7 @@ export default function LandingPage() {
           <div className="lg:col-span-7 flex flex-col items-start gap-6 text-left">
             <span className="inline-flex items-center gap-2 bg-brand-gold/10 border border-brand-gold/25 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider text-brand-gold-light">
               <Award size={14} className="text-brand-gold" />
-              MEN'S CONFIDENCE & PRESENTATION GUIDE
+              MEN&apos;S CONFIDENCE & PRESENTATION GUIDE
             </span>
             
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-[1.15] text-brand-light">
@@ -287,7 +287,7 @@ export default function LandingPage() {
               আপনি কী পাবেন? Feature না, <span className="text-gold-gradient">real result বলি।</span>
             </h2>
             <p className="text-brand-gray text-sm mt-2">
-              Practical men's guidelines that translate to everyday confidence.
+              Practical men&apos;s guidelines that translate to everyday confidence.
             </p>
           </div>
 
@@ -460,7 +460,7 @@ export default function LandingPage() {
                   {[...Array(rev.rating)].map((_, i) => <Star key={i} size={14} fill="currentColor" />)}
                 </div>
                 <p className="text-sm text-brand-light/95 italic mb-6 leading-relaxed">
-                  "{rev.text}"
+                  &quot;{rev.text}&quot;
                 </p>
                 <div>
                   <h4 className="text-sm font-bold text-brand-gold-light">{rev.name}</h4>
@@ -588,7 +588,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-brand-gray">
           <p>© {new Date().getFullYear()} Being The Man. All Rights Reserved.</p>
           <div className="flex gap-6">
-            <a href="#whats-inside" className="hover:text-brand-gold transition-colors">What's Inside</a>
+            <a href="#whats-inside" className="hover:text-brand-gold transition-colors">What&apos;s Inside</a>
             <a href="#pricing" className="hover:text-brand-gold transition-colors">Pricing</a>
           </div>
         </div>

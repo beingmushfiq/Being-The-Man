@@ -1,9 +1,8 @@
 import { NextResponse } from 'next/server';
-// @ts-ignore
 import BkashGateway from 'bkash-payment-gateway';
 
 const bkash = new BkashGateway({
-  baseUrl: process.env.BKASH_BASE_URL || 'https://checkout.sandbox.bka.sh/v1.2.0-beta',
+  baseURL: process.env.BKASH_BASE_URL || 'https://checkout.sandbox.bka.sh/v1.2.0-beta',
   key: process.env.BKASH_APP_KEY || 'sandbox_key',
   secret: process.env.BKASH_APP_SECRET || 'sandbox_secret',
   username: process.env.BKASH_USERNAME || 'sandbox_user',
@@ -15,15 +14,14 @@ export async function POST(req: Request) {
     const { amount, orderId } = await req.json();
 
     const paymentData = await bkash.createPayment({
-      amount: amount.toString(),
+      amount: Number(amount),
       orderID: orderId,
       intent: 'sale',
-      currency: 'BDT',
-      merchantCallbackURL: `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/api/checkout/bkash/callback`,
     });
 
     return NextResponse.json(paymentData);
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : 'An unknown error occurred';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }

@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-dark: #050A18;
+  --color-brand-navy: #0B1528;
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-light: #F3E5AB;
+  --color-brand-gray: #8F9CAE;
+  --color-brand-light: #F8FAFC;
+  --color-brand-accent: #E2C974;
+  
+  --font-bengali: var(--font-hind-siliguri), sans-serif;
+  --font-serif: var(--font-playfair-display), serif;
+  --font-sans: var(--font-montserrat), sans-serif;
+  
+  --animate-gold-shimmer: gold-shimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes gold-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+:root {
+  --background: #050A18;
+  --foreground: #F8FAFC;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Premium typography & styling helpers */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% auto;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #D4AF37 100%);
+  background-size: 200% auto;
+}
+
+.border-gold-gradient {
+  border-image: linear-gradient(135deg, #D4AF37, #0B1528, #D4AF37) 1;
+}
+
+/* Glassmorphism card styles */
+.glass-panel {
+  background: rgba(11, 21, 40, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}

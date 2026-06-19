@@ -188,3 +188,33 @@ h1, h2, h3, h4, h5, h6 {
     padding: 4rem 0;
   }
 }
+
+/* Nav link hover effects */
+button[style*="navLinkBtn"]:hover,
+nav button:hover {
+  color: var(--color-primary) !important;
+}
+
+/* Hide desktop nav links on small screens */
+@media (max-width: 860px) {
+  .nav-links-desktop {
+    display: none !important;
+  }
+}
+
+/* Presence section responsive */
+@media (max-width: 768px) {
+  .presence-grid {
+    grid-template-columns: 1fr !important;
+    padding: 2rem 1rem !important;
+  }
+  .presence-image-col {
+    min-height: 200px !important;
+  }
+}
+
+/* Scrollbar hidden for nav overflow */
+nav div::-webkit-scrollbar {
+  display: none;
+}
+

@@ -47,18 +47,69 @@ export default function LandingPage() {
     { name: 'তাহমিদ চৌধুরী', role: 'Business Owner', text: 'মানুষের সামনে কথা বলার সময় বডি ল্যাঙ্গুয়েজ আর পোশাকে যে একটা কর্তৃত্ব বা অথোরিটি আনা যায়, সেটা এই বইয়ের মাধ্যমে শিখেছি। রিকমেন্ডেড!', rating: 5 }
   ];
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const scrollToSection = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <div style={{ backgroundColor: 'var(--color-bg-deep)', minHeight: '100vh', fontFamily: 'var(--font-bengali)' }}>
-      {/* Navigation Bar */}
-      <nav style={navStyle}>
+    <div style={{ backgroundColor: 'var(--color-bg-deep)', minHeight: '100vh', fontFamily: 'var(--font-bengali)', paddingBottom: '70px' }}>
+      {/* Navigation Bar - Glass Effect */}
+      <nav id="hero" style={navStyle}>
         <div className="container" style={navContainerStyle}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-            <img src="/logo-transparent.png" alt="Being The Man" style={{ height: '45px', objectFit: 'contain' }} onError={(e) => {e.target.src = '/logo.jpg'}} />
+          {/* Clickable Logo + Brand Name → scrolls to top */}
+          <button onClick={scrollToTop} style={navBrandStyle}>
+            <img
+              src="/logo-transparent.png"
+              alt="Being The Man"
+              style={{ height: '40px', objectFit: 'contain' }}
+              onError={(e) => { e.target.src = '/logo.jpg'; }}
+            />
+            <span style={navBrandNameStyle}>Being The Man</span>
+          </button>
+
+          {/* Desktop Segment Nav Links */}
+          <div style={navLinksStyle}>
+            <button onClick={() => scrollToSection('problem')} style={navLinkBtn}>সমস্যা</button>
+            <button onClick={() => scrollToSection('impact')} style={navLinkBtn}>Impact</button>
+            <button onClick={() => scrollToSection('benefits')} style={navLinkBtn}>ফলাফল</button>
+            <button onClick={() => scrollToSection('whats-inside')} style={navLinkBtn}>Inside</button>
+            <button onClick={() => scrollToSection('reviews')} style={navLinkBtn}>Reviews</button>
+            <button onClick={() => scrollToSection('pricing')} style={navLinkBtn}>Pricing</button>
           </div>
-          <button onClick={() => openCheckout('gateway')} className="btn-primary" style={{ padding: '0.6rem 1.5rem', fontSize: '0.85rem' }}>
-            এখনই বইটি নিন
+
+          <button onClick={() => openCheckout('gateway')} className="btn-primary" style={{ padding: '0.6rem 1.4rem', fontSize: '0.82rem', whiteSpace: 'nowrap' }}>
+            এখনই নিন
           </button>
         </div>
+      </nav>
+
+      {/* Bottom Mobile Navbar */}
+      <nav style={bottomNavStyle}>
+        <button onClick={scrollToTop} style={bottomNavItem}>
+          <span style={bottomNavIcon}>🏠</span>
+          <span>Home</span>
+        </button>
+        <button onClick={() => scrollToSection('whats-inside')} style={bottomNavItem}>
+          <span style={bottomNavIcon}>📖</span>
+          <span>Inside</span>
+        </button>
+        <button onClick={() => openCheckout('gateway')} style={{ ...bottomNavItem, color: 'var(--color-primary)' }}>
+          <span style={bottomNavIcon}>🛒</span>
+          <span>Order</span>
+        </button>
+        <button onClick={() => scrollToSection('reviews')} style={bottomNavItem}>
+          <span style={bottomNavIcon}>⭐</span>
+          <span>Reviews</span>
+        </button>
+        <button onClick={() => scrollToSection('pricing')} style={bottomNavItem}>
+          <span style={bottomNavIcon}>💰</span>
+          <span>Pricing</span>
+        </button>
       </nav>
 
       {/* 1. HERO SECTION */}
@@ -128,7 +179,7 @@ export default function LandingPage() {
       </header>
 
       {/* 2. SECTION 2: THE REAL PROBLEM */}
-      <section style={problemSectionStyle} className="section-padding">
+      <section id="problem" style={problemSectionStyle} className="section-padding">
         <div className="container" style={{ maxWidth: '900px', textAlign: 'center' }}>
           <h2 style={{ fontSize: '2.2rem', marginBottom: '2rem', color: 'var(--color-primary-light)' }}>
             সমস্যা আপনার wardrobe না। সমস্যা হলো clarity-এর অভাব।
@@ -167,7 +218,7 @@ export default function LandingPage() {
       </section>
 
       {/* 3. SECTION 3: AGITATE THE PAIN & INTERACTIVE SLIDER */}
-      <section style={painSectionStyle} className="section-padding">
+      <section id="impact" style={painSectionStyle} className="section-padding">
         <div className="container">
           <div style={{ textAlign: 'center', marginBottom: '3.5rem', maxWidth: '800px', margin: '0 auto 3.5rem' }}>
             <h2 style={{ fontSize: '2.2rem', color: 'var(--color-text-white)', marginBottom: '1rem' }}>
@@ -448,7 +499,7 @@ export default function LandingPage() {
       </section>
 
       {/* SOCIAL PROOF / TESTIMONIALS */}
-      <section style={{ background: '#070E20', borderTop: '1px solid var(--color-border)' }} className="section-padding">
+      <section id="reviews" style={{ background: '#070E20', borderTop: '1px solid var(--color-border)' }} className="section-padding">
         <div className="container">
           <h2 style={{ fontSize: '2.2rem', textAlign: 'center', marginBottom: '3.5rem', color: 'var(--color-primary-light)' }}>
             আমাদের পাঠকদের প্রতিক্রিয়া
@@ -592,19 +643,157 @@ export default function LandingPage() {
 
 // STYLES object
 const navStyle = {
-  backgroundColor: 'rgba(5, 10, 24, 0.85)',
-  backdropFilter: 'blur(10px)',
-  borderBottom: '1px solid var(--color-border)',
+  background: 'rgba(5, 10, 24, 0.75)',
+  backdropFilter: 'blur(18px)',
+  WebkitBackdropFilter: 'blur(18px)',
+  borderBottom: '1px solid rgba(30, 46, 93, 0.6)',
+  boxShadow: '0 1px 0 rgba(212, 175, 55, 0.05)',
   position: 'sticky',
   top: 0,
   zIndex: 100,
-  padding: '1rem 0'
+  padding: '0.75rem 0'
 };
 
 const navContainerStyle = {
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'center'
+  alignItems: 'center',
+  gap: '1rem'
+};
+
+const navBrandStyle = {
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.6rem',
+  background: 'none',
+  border: 'none',
+  cursor: 'pointer',
+  padding: 0,
+  flexShrink: 0
+};
+
+const navBrandNameStyle = {
+  fontFamily: 'var(--font-english)',
+  fontWeight: 700,
+  fontSize: '1rem',
+  color: 'var(--color-primary-light)',
+  letterSpacing: '0.03em',
+  whiteSpace: 'nowrap'
+};
+
+const navLinksStyle = {
+  display: 'flex',
+  gap: '0.1rem',
+  alignItems: 'center',
+  overflowX: 'auto',
+  msOverflowStyle: 'none',
+  scrollbarWidth: 'none'
+};
+
+const navLinkBtn = {
+  background: 'none',
+  border: 'none',
+  color: 'var(--color-text-muted)',
+  fontFamily: 'var(--font-english)',
+  fontWeight: 600,
+  fontSize: '0.82rem',
+  letterSpacing: '0.04em',
+  cursor: 'pointer',
+  padding: '0.45rem 0.7rem',
+  borderRadius: '6px',
+  transition: 'var(--transition-smooth)',
+  whiteSpace: 'nowrap'
+};
+
+// Bottom Mobile Navbar
+const bottomNavStyle = {
+  position: 'fixed',
+  bottom: 0,
+  left: 0,
+  right: 0,
+  zIndex: 200,
+  background: 'rgba(5, 10, 24, 0.9)',
+  backdropFilter: 'blur(16px)',
+  WebkitBackdropFilter: 'blur(16px)',
+  borderTop: '1px solid rgba(30, 46, 93, 0.8)',
+  display: 'flex',
+  justifyContent: 'space-around',
+  alignItems: 'center',
+  padding: '0.45rem 0',
+  boxShadow: '0 -4px 20px rgba(0,0,0,0.4)'
+};
+
+const bottomNavItem = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '0.2rem',
+  background: 'none',
+  border: 'none',
+  color: 'var(--color-text-muted)',
+  fontFamily: 'var(--font-english)',
+  fontSize: '0.68rem',
+  fontWeight: 600,
+  letterSpacing: '0.04em',
+  cursor: 'pointer',
+  padding: '0.35rem 0.8rem',
+  transition: 'var(--transition-smooth)'
+};
+
+const bottomNavIcon = {
+  fontSize: '1.15rem',
+  lineHeight: 1
+};
+
+// Presence Section
+const presenceSectionStyle = {
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gap: '3rem',
+  alignItems: 'center',
+  marginTop: '5rem',
+  padding: '3rem',
+  background: 'rgba(212, 175, 55, 0.02)',
+  border: '1px solid rgba(212, 175, 55, 0.12)',
+  borderRadius: '16px'
+};
+
+const presenceTextCol = {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '0.5rem'
+};
+
+const presenceImageCol = {
+  position: 'relative',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  overflow: 'hidden',
+  borderRadius: '12px',
+  background: 'var(--color-bg-card)',
+  border: '1px solid var(--color-border)',
+  minHeight: '280px'
+};
+
+const presenceImageStyle = {
+  width: '80%',
+  maxWidth: '280px',
+  objectFit: 'contain',
+  filter: 'brightness(1.1) drop-shadow(0 0 20px rgba(212,175,55,0.2))'
+};
+
+const presenceImageOverlay = {
+  position: 'absolute',
+  bottom: '1rem',
+  left: '50%',
+  transform: 'translateX(-50%)',
+  background: 'rgba(5, 10, 24, 0.85)',
+  backdropFilter: 'blur(8px)',
+  padding: '0.4rem 1rem',
+  borderRadius: '20px',
+  border: '1px solid rgba(212, 175, 55, 0.2)',
+  whiteSpace: 'nowrap'
 };
 
 const heroSectionStyle = {

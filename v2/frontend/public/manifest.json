@@ -1,0 +1,23 @@
+{
+  "name": "Being The Man",
+  "short_name": "Being Man",
+  "description": "E-Commerce Book Store for Being The Man",
+  "theme_color": "#111827",
+  "background_color": "#0B0F19",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

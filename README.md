@@ -1,356 +1,232 @@
-<div align="center">
-
 # 🎩 Being The Man — E-Commerce Book Store
 
-### *The Silent Language of Style*
+<div align="center">
+  <p align="center">
+    <img src="v2/frontend/public/logo.png" alt="Being The Man Logo" width="130" style="border-radius: 50%; box-shadow: 0px 8px 30px rgba(212, 175, 55, 0.35); border: 2px solid #D4AF37;" />
+  </p>
 
-**A premium, full-stack landing page and e-commerce CMS for selling digital books.**  
-Built with React, Vite, and Supabase. Designed for the Bangladeshi market with BDT payments, WhatsApp ordering, and a full admin dashboard.
+  <h1><b>Being The Man — Digital Publishing Ecosystem</b></h1>
+  <p><i>A premium, conversion-optimized landing page, checkout, and admin CMS framework built for the digital publication <b>"The Silent Language of Style"</b>.</i></p>
 
----
+  <p align="center">
+    <a href="https://nextjs.org"><img src="https://img.shields.io/badge/Next.js-15-black?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" /></a>
+    <a href="https://laravel.com"><img src="https://img.shields.io/badge/Laravel-13-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel" /></a>
+    <a href="https://filamentphp.com"><img src="https://img.shields.io/badge/Filament-v5-F59E0B?style=for-the-badge&logo=laravel&logoColor=white" alt="Filament" /></a>
+    <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-v4-38BDF8?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" /></a>
+  </p>
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/beingmushfiq/Being-The-Man&env=VITE_SUPABASE_URL,VITE_SUPABASE_ANON_KEY&envDescription=Supabase%20project%20credentials&envLink=https://supabase.com/dashboard)
-
----
-
+  <p align="center">
+    <a href="https://vercel.com/new/clone?repository-url=https://github.com/beingmushfiq/Being-The-Man">
+      <img src="https://vercel.com/button" alt="Deploy with Vercel" />
+    </a>
+  </p>
 </div>
 
-## 📋 Table of Contents
+---
+
+## 📖 Table of Contents
 
 - [Overview](#-overview)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Screenshots](#-screenshots)
-- [Quick Start (Local)](#-quick-start-local)
-- [Supabase Setup](#-supabase-setup)
-- [Deploy to Vercel](#-deploy-to-vercel)
-- [Environment Variables](#-environment-variables)
-- [Admin Dashboard](#-admin-dashboard)
-- [Project Structure](#-project-structure)
-- [Customization Guide](#-customization-guide)
+- [Architecture & Tech Stack](#-architecture--tech-stack)
+- [Key Features](#-key-features)
+  - [Sales Funnel Showcase](#sales-funnel-showcase)
+  - [Local Payment Gateways](#local-payment-gateways)
+  - [Filament Settings Panel](#filament-settings-panel)
+- [Project Directory Layout](#-project-directory-layout)
+- [Local Installation](#-local-installation)
+  - [Backend & CMS Setup](#1-backend--cms-setup)
+  - [Frontend Storefront Setup](#2-frontend-storefront-setup)
+- [Environment Variables Guide](#-environment-variables-guide)
+- [Customization & Tuning](#-customization--tuning)
+  - [Brand Aesthetics](#brand-aesthetics)
+  - [Dynamic Pricing & Gates](#dynamic-pricing--gates)
+- [License](#-license)
 
 ---
 
 ## 🌟 Overview
 
-**Being The Man** is a high-converting, premium e-commerce landing page built to sell the digital book *"The Silent Language of Style"* — a men's confidence and style guide targeting the Bangladeshi market.
+**Being The Man** is a premium, high-converting digital storefront designed to sell the publication **"The Silent Language of Style"** — a definitive men's confidence and style guide targeting the Bangladeshi market. 
 
-The site features a **12-section psychological sales funnel** (Hook → Pain → Agitation → Transformation → Offer → CTA), a **multi-channel checkout system** (bKash, Nagad, SSLCommerz, WhatsApp, Gumroad), and a **full admin CMS dashboard** for managing products, orders, and customers.
-
----
-
-## ✨ Features
-
-### 🛍️ Sales Landing Page
-- 12-section psychology-driven sales funnel in Bengali & English
-- CSS 3D interactive book cover mockup
-- Before/After style transformation visualizer
-- Social proof testimonials with star ratings
-- Interactive FAQ accordion
-- Smooth micro-animations and premium dark navy + gold aesthetic
-
-### 💳 Multi-Channel Checkout
-| Option | Description |
-|--------|-------------|
-| **bKash** | Local mobile banking (BDT) |
-| **Nagad** | Local mobile banking (BDT) |
-| **SSLCommerz** | Cards & Net Banking (BDT) |
-| **WhatsApp** | Pre-filled order message sent to WhatsApp |
-| **Gumroad** | Redirect to external Gumroad checkout |
-
-### 🏛️ Admin Dashboard (`/admin`)
-- **Sales Overview** — Revenue KPIs, order counts, SVG bar charts
-- **Order History** — Searchable, filterable orders with status management
-- **Customer Database** — Customer profiles with lifetime value (LTV)
-- **CMS Settings** — Edit product pricing, toggle launch offers, update WhatsApp number and Gumroad URL
-
-### 🔧 Technical Highlights
-- **Offline-first** — LocalStorage fallback when Supabase is unavailable
-- **SEO-ready** — Full meta tags, Open Graph, Twitter Cards, Bengali language support
-- **Responsive** — Mobile-first layout across all screen sizes
-- **Secure** — Supabase Auth for admin login with session-based protection
+The application utilizes a **12-section psychological sales funnel** (Hook → Pain → Agitation → Transformation → Offer → CTA) tailored for conversion, coupled with a robust Laravel and Filament-powered administrative panel supporting multiple payment pathways (bKash, Nagad, Shurjopay, AamarPay) and customer tracking utilities.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Architecture & Tech Stack
 
-| Layer | Technology |
-|-------|-----------|
-| **Frontend** | React 19, Vite 8 |
-| **Routing** | React Router DOM v7 |
-| **Styling** | Vanilla CSS (custom design system) |
-| **Icons** | Lucide React |
-| **Fonts** | Hind Siliguri, Montserrat, Playfair Display (Google Fonts) |
-| **Backend / DB** | Supabase (PostgreSQL + Auth + Storage) |
-| **Hosting** | Vercel (frontend) + Supabase (backend) |
+This project is built using a modern decoupled architecture:
+
+```mermaid
+graph TD
+    Client[Next.js 15 Storefront] <--> |REST API / JSON| API[Laravel 13 API Core]
+    API <--> |DB Queries| DB[(SQLite / MySQL Database)]
+    Admin[Filament v5 Dashboard] <--> |State Mutation| API
+```
+
+### Stack Highlights
+
+* **Frontend Storefront:** **Next.js 15** & **React 19** with fully responsive Tailwind CSS v4 styling, customized Google Fonts integration ( Hind Siliguri & Playfair Display ), and interactive 3D CSS book mockup.
+* **Administrative Portal:** **Filament v5** & **Laravel 13** offering settings sheets, widgets, order lists, and customer lookup tables.
+* **Database & Seeders:** SQLite/MySQL backend with custom schemas containing pre-seeded default configurations.
 
 ---
 
-## 🚀 Quick Start (Local)
+## ✨ Key Features
 
-### Prerequisites
-- Node.js v18+ installed
-- A Supabase account (free tier is sufficient)
+### Sales Funnel Showcase
+* **Structured Funnel Sections:** A psychological sequence taking the customer from initial hook to conversion.
+* **Before/After Transform Visualizer:** Clear, high-contrast style transformation grids.
+* **Testimonials & Social Proof:** Interactive customer rating panels and star selectors.
+* **Adaptive FAQ Engine:** Accordion questions powered by client-side states.
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/beingmushfiq/Being-The-Man.git
-cd Being-The-Man
-```
+### Local Payment Gateways
+The backend features a unified `PaymentProviderInterface` enabling hot-swappable local gateways:
+* **bKash:** Full tokenized merchant checkout flow.
+* **Nagad:** Integrated mobile wallet API.
+* **ShurjoPay & AamarPay:** Secure local credit card and bank transfer routing.
+* **WhatsApp Ordering:** Instant fallback to chat-driven checkout links.
 
-### 2. Install dependencies
-```bash
-npm install
-```
-
-### 3. Set up environment variables
-```bash
-cp .env.example .env
-```
-Then edit `.env` with your Supabase credentials (see [Environment Variables](#-environment-variables)).
-
-### 4. Run the development server
-```bash
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) in your browser.
-
-> **Without Supabase credentials:** The app runs fully in offline/demo mode using LocalStorage. Use the demo admin login: `admin@beingtheman.com` / `admin123`
+### Filament Settings Panel
+Accessible at `/admin/manage-settings`, this sheet lets you modify the platform state instantly:
+* **Store Details:** Customize names, URLs, prefixes, and currencies.
+* **Product Pricing:** Live toggles for launch prices vs. standard prices.
+* **API Credentials:** Direct secret inputs for bKash, ShurjoPay, Meta Pixel, WhatsApp API, and Google Tag Manager.
+* **System State:** One-click maintenance-mode toggle with custom messages.
 
 ---
 
-## 🗄️ Supabase Setup
+## 📁 Project Directory Layout
 
-### Step 1 — Create a Supabase Project
-
-1. Go to [supabase.com](https://supabase.com) and sign in
-2. Click **"New Project"**
-3. Fill in project name, database password, and choose a region close to Bangladesh (e.g., Singapore)
-4. Wait ~2 minutes for the project to be provisioned
-
-### Step 2 — Run the Database Schema
-
-1. In your Supabase dashboard, go to **SQL Editor**
-2. Click **"New Query"**
-3. Copy and paste the entire contents of [`supabase/schema.sql`](./supabase/schema.sql)
-4. Click **"Run"** (▶)
-
-This will create:
-- `products` table — Book title, BDT pricing, launch offer toggle
-- `orders` table — Customer info, payment status, gateway transaction IDs
-- `app_settings` table — WhatsApp number, Gumroad URL, checkout config
-
-### Step 3 — Get Your API Credentials
-
-1. In Supabase dashboard, go to **Settings → API**
-2. Copy:
-   - **Project URL** → `VITE_SUPABASE_URL`
-   - **anon / public key** → `VITE_SUPABASE_ANON_KEY`
-
-### Step 4 — Create an Admin User
-
-1. In Supabase dashboard, go to **Authentication → Users**
-2. Click **"Add User"**
-3. Enter your admin email and a strong password
-4. This user can now log in at `/admin/login`
-
-### Step 5 — Configure Row Level Security (Recommended)
-
-In **SQL Editor**, run these policies to protect your data:
-
-```sql
--- Allow public to insert orders (for checkout)
-CREATE POLICY "Allow public inserts on orders"
-ON orders FOR INSERT TO anon WITH CHECK (true);
-
--- Allow only authenticated admins to read all orders
-CREATE POLICY "Allow authenticated to read orders"
-ON orders FOR SELECT TO authenticated USING (true);
-
--- Allow only authenticated admins to read products
-CREATE POLICY "Allow public to read products"
-ON products FOR SELECT TO anon USING (true);
+```
+Being The Man/
+├── v2/
+│   ├── backend/                  # Laravel 13 Core & Filament v5 Panel
+│   │   ├── app/
+│   │   │   ├── Filament/        # Admin resources, pages, and widgets
+│   │   │   ├── Models/          # Eloquent Models (Order, Setting, Product, etc.)
+│   │   │   └── Services/        # Payment gateway drivers (bKash, ShurjoPay, etc.)
+│   │   ├── config/              # Laravel config profiles
+│   │   ├── database/            # Database migrations & SettingSeeders
+│   │   ├── public/              # Public assets (logo, favicon)
+│   │   └── routes/              # API & web route configurations
+│   │
+│   └── frontend/                 # Next.js 15 Storefront
+│       ├── src/
+│       │   ├── app/             # Page layouts, API routes, components
+│       │   ├── components/      # Common UI (CheckoutModal, Book3D)
+│       │   └── content.ts       # Fallback pricing & static catalog data
 ```
 
 ---
 
-## 🚢 Deploy to Vercel
+## 🚀 Local Installation
 
-### Option A — One-Click Deploy
+### 1. Backend & CMS Setup
+Ensure you have PHP 8.2+ and Composer installed.
 
-Click the button below and fill in your Supabase credentials when prompted:
+1. Navigate to backend:
+   ```bash
+   cd v2/backend
+   ```
+2. Install Composer dependencies:
+   ```bash
+   composer install
+   ```
+3. Create local environment configuration:
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
+4. Set up the database (using SQLite by default):
+   ```bash
+   touch database/database.sqlite
+   php artisan migrate --seed
+   ```
+5. Start development server:
+   ```bash
+   php artisan serve
+   ```
+   Admin panel will be accessible at: `http://localhost:8000/admin` (Default: `admin@example.com` / `password`).
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/beingmushfiq/Being-The-Man&env=VITE_SUPABASE_URL,VITE_SUPABASE_ANON_KEY&envDescription=Supabase%20project%20credentials)
+### 2. Frontend Storefront Setup
+Ensure you have Node.js v18+ installed.
 
-### Option B — Manual Deploy via Vercel CLI
-
-#### 1. Push your code to GitHub
-```bash
-git init
-git add .
-git commit -m "Initial commit - Being The Man store"
-git remote add origin https://github.com/beingmushfiq/Being-The-Man.git
-git push -u origin main
-```
-
-#### 2. Install Vercel CLI
-```bash
-npm install -g vercel
-```
-
-#### 3. Deploy
-```bash
-vercel
-```
-
-Follow the interactive prompts. When asked about environment variables, add:
-- `VITE_SUPABASE_URL` → Your Supabase Project URL
-- `VITE_SUPABASE_ANON_KEY` → Your Supabase anon key
-
-#### 4. Set Environment Variables in Vercel Dashboard
-1. Go to [vercel.com/dashboard](https://vercel.com/dashboard)
-2. Click your project → **Settings → Environment Variables**
-3. Add both variables for **Production**, **Preview**, and **Development** environments
-4. Click **Redeploy** to apply changes
-
-### Option C — Deploy via Vercel Dashboard (GitHub Import)
-
-1. Go to [vercel.com/new](https://vercel.com/new)
-2. Import your GitHub repository
-3. Under **Environment Variables**, add:
-
-   | Name | Value |
-   |------|-------|
-   | `VITE_SUPABASE_URL` | `https://xxxx.supabase.co` |
-   | `VITE_SUPABASE_ANON_KEY` | `eyJh...` |
-
-4. Click **Deploy** ✅
+1. Navigate to frontend:
+   ```bash
+   cd v2/frontend
+   ```
+2. Install Node packages:
+   ```bash
+   npm install
+   ```
+3. Copy local environment variables:
+   ```bash
+   cp .env.example .env.local
+   ```
+4. Spin up Next.js:
+   ```bash
+   npm run dev
+   ```
+   Storefront will be accessible at: `http://localhost:3000`.
 
 ---
 
-## 🔐 Environment Variables
+## 🔐 Environment Variables Guide
 
-Create a `.env` file in the project root:
-
+### Backend Configuration (`v2/backend/.env`)
 ```env
-# Supabase Configuration
-VITE_SUPABASE_URL=https://your-project-id.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anon-public-key-here
+APP_NAME="Being The Man"
+APP_ENV=local
+APP_KEY=base64:xxx
+APP_URL=http://localhost:8000
+
+DB_CONNECTION=sqlite
+# If using mysql:
+# DB_CONNECTION=mysql
+# DB_HOST=127.0.0.1
+# DB_PORT=3306
+# DB_DATABASE=being_the_man
 ```
 
-> **Important:** Variables must be prefixed with `VITE_` to be accessible in the React frontend via `import.meta.env`.
-
-Create a `.env.example` file for reference (safe to commit):
+### Frontend Configuration (`v2/frontend/.env.local`)
 ```env
-VITE_SUPABASE_URL=https://placeholder-project.supabase.co
-VITE_SUPABASE_ANON_KEY=placeholder-anon-key
+NEXT_PUBLIC_API_URL=http://localhost:8000/api
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+# Payment Gateways (falls back to DB settings when integrated)
+BKASH_BASE_URL=https://checkout.sandbox.bka.sh/v1.2.0-beta
+BKASH_APP_KEY=sandbox_key
+BKASH_APP_SECRET=sandbox_secret
+BKASH_USERNAME=sandbox_user
+BKASH_PASSWORD=sandbox_pass
 ```
 
 ---
 
-## 🏛️ Admin Dashboard
+## 🎨 Customization & Tuning
 
-Access the admin dashboard at `/admin/login`.
+### Brand Aesthetics
+You can edit the primary styling configuration values and brand styles in the custom Tailwind setup in the frontend:
+* **Backgrounds:** `--color-bg-deep: #050A18`
+* **Accents:** `--color-primary: #D4AF37` (Gold Accent)
+* **Fonts:** Configured via `google/fonts` in [page.tsx](file:///d:/Being%20The%20Man%20%E2%80%94%20E-Commerce%20Book%20Store/v2/frontend/src/app/page.tsx).
 
-| Feature | Path | Description |
-|---------|------|-------------|
-| Login | `/admin/login` | Secure Supabase Auth login |
-| Dashboard | `/admin` | Sales overview and KPIs |
-| Orders | `/admin` → Orders tab | Full order history with status control |
-| Customers | `/admin` → Customer tab | Customer database with LTV |
-| CMS | `/admin` → CMS tab | Edit pricing, toggle offers, configure checkout |
-
-**Demo credentials (offline mode only):**
-```
-Email:    admin@beingtheman.com
-Password: admin123
-```
-> These only work when Supabase credentials are not configured. Always create a real Supabase user for production.
+### Dynamic Pricing & Gates
+Pricing definitions can be updated dynamically via [ManageSettings.php](file:///d:/Being%20The%20Man%20%E2%80%94%20E-Commerce%20Book%20Store/v2/backend/app/Filament/Pages/ManageSettings.php) inside the Filament dashboard, which writes directly to the `settings` database table and instantly propagates values to the storefront via the public API `/api/settings/public` endpoint.
 
 ---
 
-## 📁 Project Structure
-
-```
-being-the-man/
-├── public/
-│   ├── logo.jpg                  # Brand logo (also used as favicon)
-│   └── logo-transparent.png      # Transparent logo for dark backgrounds
-├── src/
-│   ├── components/
-│   │   └── CheckoutModal.jsx     # Multi-channel checkout modal
-│   ├── pages/
-│   │   ├── LandingPage.jsx       # 12-section sales funnel page
-│   │   ├── Login.jsx             # Admin login page
-│   │   └── AdminDashboard.jsx    # CMS + Reports + Orders + Customers
-│   ├── supabaseClient.js         # Supabase client initialization
-│   ├── index.css                 # Premium design system (CSS variables)
-│   ├── App.jsx                   # Route configuration
-│   └── main.jsx                  # React entry point
-├── supabase/
-│   └── schema.sql                # PostgreSQL schema (run in Supabase SQL Editor)
-├── index.html                    # HTML entry point with SEO meta tags
-├── vite.config.js                # Vite build configuration
-└── package.json
-```
-
----
-
-## 🎨 Customization Guide
-
-### Change Pricing
-**Via CMS (recommended):** Log into `/admin` → CMS Settings → update BDT prices.
-
-**Via code:** Edit `src/pages/LandingPage.jsx` — find the `product` state default values:
-```js
-const [product, setProduct] = useState({
-  regular_price_bdt: 1000,   // ← Regular price in BDT
-  launch_price_bdt: 490,     // ← Launch offer price in BDT
-  is_launch_offer: true      // ← Toggle launch offer badge
-});
-```
-
-### Change WhatsApp Number
-**Via CMS:** Log into `/admin` → CMS Settings → WhatsApp number field.
-
-**Via code:** Search for `8801700000000` in `CheckoutModal.jsx` and replace.
-
-### Change Gumroad Link
-**Via CMS:** Log into `/admin` → CMS Settings → Gumroad URL field.
-
-### Change Brand Colors
-Edit CSS variables in `src/index.css`:
-```css
-:root {
-  --color-bg-deep: #050A18;      /* Main background */
-  --color-primary: #D4AF37;      /* Gold accent */
-  --color-primary-light: #F3E5AB;/* Light gold */
-  --color-text-white: #F8F9FA;   /* Primary text */
-}
-```
-
-### Change Fonts
-Edit the Google Fonts import at the top of `src/index.css` and update the CSS variables:
-```css
---font-bengali: 'Hind Siliguri', 'Anek Bangla', sans-serif;
---font-english: 'Montserrat', sans-serif;
---font-accent:  'Playfair Display', serif;
-```
-
----
-
-## 📄 License
+## 🔒 License
 
 This project is proprietary software owned by **Being The Man**.  
 All rights reserved. Unauthorized copying, distribution, or modification is prohibited.
 
----
-
 <div align="center">
-
-**Built with ❤️ for Being The Man**
-
-[Facebook](https://www.facebook.com/beingtheman) • [Instagram](https://www.instagram.com/beeingman/) • [Gumroad](https://beingman.gumroad.com/l/stylelanguage)
-
+  <br />
+  <p><b>Built with ❤️ for Being The Man</b></p>
+  <p>
+    <a href="https://www.facebook.com/beingtheman">Facebook</a> • 
+    <a href="https://www.instagram.com/beeingman/">Instagram</a> • 
+    <a href="https://beingman.gumroad.com/l/stylelanguage">Gumroad</a>
+  </p>
 </div>

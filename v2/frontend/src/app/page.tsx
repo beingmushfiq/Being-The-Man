@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { 
   Award, Shield, Check, Star, AlertCircle, ShoppingBag, Eye, 
-  TrendingUp, Compass, Bookmark, UserCheck, ChevronDown 
+  TrendingUp, Compass, Bookmark, UserCheck, ChevronDown, Home, BookOpen, DollarSign, HelpCircle 
 } from 'lucide-react';
 import Book3D from './Book3D';
 import CheckoutModal from './CheckoutModal';
@@ -24,13 +24,23 @@ export default function LandingPage() {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  const sections = [
+    { label: 'Clarity', id: 'clarity', icon: Compass },
+    { label: 'Presence', id: 'presence', icon: TrendingUp },
+    { label: 'Outcomes', id: 'outcomes', icon: Award },
+    { label: 'Inside', id: 'whats-inside', icon: BookOpen },
+    { label: 'Reviews', id: 'reviews', icon: Star },
+    { label: 'Pricing', id: 'pricing', icon: DollarSign },
+    { label: 'FAQ', id: 'faq', icon: HelpCircle },
+  ];
+
   return (
-    <div className="bg-brand-dark min-h-screen font-sans overflow-x-hidden selection:bg-brand-gold/30 selection:text-brand-gold-light">
+    <div id="top" className="bg-brand-dark min-h-screen font-sans overflow-x-hidden selection:bg-brand-gold/30 selection:text-brand-gold-light pb-24 md:pb-0">
       
       {/* Premium Header/Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-40 bg-brand-dark/85 backdrop-blur-md border-b border-brand-gold/10 py-4 transition-all">
+      <nav className="fixed top-0 left-0 right-0 z-45 bg-brand-dark/65 backdrop-blur-md border-b border-brand-gold/10 py-4 transition-all">
         <div className="max-w-6xl mx-auto px-4 md:px-6 flex justify-between items-center">
-          <div className="flex items-center gap-3">
+          <a href="#top" className="flex items-center gap-3 group transition-transform duration-300 hover:scale-[1.02]">
             <img 
               src="/logo.png" 
               alt="Being MAN" 
@@ -39,12 +49,26 @@ export default function LandingPage() {
             <span className="font-serif font-bold text-xl tracking-wider text-gold-gradient hidden sm:inline-block">
               BEING THE MAN
             </span>
+          </a>
+
+          {/* Desktop Navigation Links */}
+          <div className="hidden lg:flex items-center gap-6">
+            {sections.map((sec) => (
+              <a 
+                key={sec.id} 
+                href={`#${sec.id}`} 
+                className="text-xs font-semibold uppercase tracking-wider text-brand-gray hover:text-brand-gold transition-colors duration-200"
+              >
+                {sec.label}
+              </a>
+            ))}
           </div>
+
           <button 
             onClick={openCheckout}
-            className="bg-gold-gradient text-brand-dark font-bold text-xs md:text-sm px-5 py-2.5 rounded-full hover:shadow-lg hover:shadow-brand-gold/20 transition-all duration-300 transform hover:-translate-y-[1px]"
+            className="bg-gold-gradient text-brand-dark font-bold text-xs md:text-sm px-6 py-2.5 rounded-full hover:shadow-lg hover:shadow-brand-gold/20 transition-all duration-300 transform hover:-translate-y-[1px]"
           >
-            বইটি নিন
+            Buy Now
           </button>
         </div>
       </nav>
@@ -74,7 +98,7 @@ export default function LandingPage() {
                 onClick={openCheckout}
                 className="w-full md:w-auto bg-gold-gradient text-brand-dark font-bold px-8 py-4 rounded-xl flex items-center justify-center gap-2.5 shadow-lg shadow-brand-gold/10 hover:opacity-95 transition-opacity"
               >
-                <ShoppingBag size={18} /> এখনই বইটি নিন
+                <ShoppingBag size={18} /> Buy Now
               </button>
               <a 
                 href="#whats-inside"
@@ -97,7 +121,7 @@ export default function LandingPage() {
       </header>
 
       {/* 2. Problem Section */}
-      <section className="py-20 border-t border-brand-gold/5 bg-brand-navy/10">
+      <section id="clarity" className="py-20 border-t border-brand-gold/5 bg-brand-navy/10 scroll-mt-20">
         <div className="max-w-4xl mx-auto px-4 md:px-6 text-center">
           <h2 className="text-3xl md:text-4xl font-serif font-bold mb-12 text-brand-light">
             সমস্যা আপনার wardrobe না। <br className="hidden md:inline" />
@@ -138,7 +162,7 @@ export default function LandingPage() {
       </section>
 
       {/* 3. Agitate Pain Section */}
-      <section className="py-20 border-t border-brand-gold/5">
+      <section id="presence" className="py-20 border-t border-brand-gold/5 scroll-mt-20">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-brand-light mb-4">
@@ -245,7 +269,7 @@ export default function LandingPage() {
       </section>
 
       {/* 5. Result-Focused Benefits */}
-      <section className="py-20 border-t border-brand-gold/5">
+      <section id="outcomes" className="py-20 border-t border-brand-gold/5 scroll-mt-20">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-brand-light">
@@ -320,7 +344,7 @@ export default function LandingPage() {
       </section>
 
       {/* 7. What's Inside */}
-      <section id="whats-inside" className="py-20 border-t border-brand-gold/5">
+      <section id="whats-inside" className="py-20 border-t border-brand-gold/5 scroll-mt-20">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-center text-brand-light mb-16">
             বইয়ের ভিতরে কী আছে, আর কেন সেটা <span className="text-gold-gradient">আপনার জন্য important</span>
@@ -412,7 +436,7 @@ export default function LandingPage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 border-t border-brand-gold/5 bg-brand-dark">
+      <section id="reviews" className="py-20 border-t border-brand-gold/5 bg-brand-dark scroll-mt-20">
         <div className="max-w-6xl mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-serif font-bold text-center text-brand-light mb-16">
             আমাদের পাঠকদের প্রতিক্রিয়া
@@ -450,13 +474,13 @@ export default function LandingPage() {
             কিন্তু আপনি যদি আজ শুরু করেন, তাহলে খুব কম সময়ের মধ্যে আপনি smarter clothing decisions নিতে পারবেন, নিজের লুক নিয়ে intentional হবেন এবং মানুষের সামনে solid impression তৈরি করতে পারবেন।
           </p>
           <div className="inline-block bg-brand-gold/10 border border-brand-gold/25 px-6 py-3 rounded-xl text-brand-gold-light font-bold text-sm md:text-base">
-            Style overnight বদলায় না। কিন্তু clarity একদিনেই শুরু হতে পারে।
+            Style overnight bodlay na. Kintu clarity ekdinei shuru hote pare.
           </div>
         </div>
       </section>
 
       {/* 11. Price + CTA */}
-      <section id="pricing" className="py-20 border-t border-brand-gold/5 bg-brand-navy/10">
+      <section id="pricing" className="py-20 border-t border-brand-gold/5 bg-brand-navy/10 scroll-mt-20">
         <div className="max-w-2xl mx-auto px-4 md:px-6 text-center">
           <h2 className="text-2xl md:text-3xl font-serif font-bold text-brand-light mb-6">
             নিজের presence upgrade করার এই investment কি worth it? Absolutely.
@@ -484,7 +508,7 @@ export default function LandingPage() {
                 onClick={openCheckout}
                 className="w-full bg-gold-gradient text-brand-dark font-bold py-4 rounded-xl shadow-lg shadow-brand-gold/10 hover:opacity-95 transition-opacity"
               >
-                এখনই বইটি কিনুন
+                Buy Now
               </button>
               <button 
                 onClick={openCheckout}
@@ -502,7 +526,7 @@ export default function LandingPage() {
       </section>
 
       {/* 12. FAQ */}
-      <section className="py-20 border-t border-brand-gold/5">
+      <section id="faq" className="py-20 border-t border-brand-gold/5 scroll-mt-20">
         <div className="max-w-3xl mx-auto px-4 md:px-6">
           <h2 className="text-3xl font-serif font-bold text-center text-brand-light mb-12">
             সাধারণ কিছু প্রশ্ন (FAQ)
@@ -541,7 +565,7 @@ export default function LandingPage() {
             আপনার style আপনার হয়ে কথা বলুক।
           </h2>
           <p className="text-brand-light text-base mb-10 leading-relaxed">
-            আপনি room-এ ঢোকার আগেই আপনার পোশাক, আপনার posture, আপনার presence একটা message পাঠায়। প্রশ্ন হলো, সেই message কি random? নাকি intentional?
+            আপনি room-এ ঢোকার আগেই আপনার পোশাক, আপনার posture, your presence একটা message পাঠায়। প্রশ্ন হলো, সেই message কি random? নাকি intentional?
           </p>
           <button 
             onClick={openCheckout}
@@ -562,6 +586,32 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      {/* Mobile Bottom Navigation Bar */}
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-45 bg-brand-dark/70 backdrop-blur-lg border-t border-brand-gold/15 py-3 px-4 shadow-2xl">
+        <div className="flex justify-around items-center max-w-md mx-auto">
+          <a href="#top" className="flex flex-col items-center gap-1 text-brand-gray hover:text-brand-gold transition-colors duration-200">
+            <Home size={18} />
+            <span className="text-[9px] font-medium tracking-wider uppercase">Home</span>
+          </a>
+          {sections.slice(0, 3).map((sec) => {
+            const Icon = sec.icon;
+            return (
+              <a key={sec.id} href={`#${sec.id}`} className="flex flex-col items-center gap-1 text-brand-gray hover:text-brand-gold transition-colors duration-200">
+                <Icon size={18} />
+                <span className="text-[9px] font-medium tracking-wider uppercase">{sec.label}</span>
+              </a>
+            );
+          })}
+          <button 
+            onClick={openCheckout} 
+            className="flex flex-col items-center gap-1 bg-gold-gradient text-brand-dark px-3 py-1.5 rounded-lg font-bold text-[9px] uppercase tracking-wider shadow-md shadow-brand-gold/10"
+          >
+            <ShoppingBag size={14} />
+            <span>Buy</span>
+          </button>
+        </div>
+      </div>
 
       {/* Checkout Modal */}
       <CheckoutModal

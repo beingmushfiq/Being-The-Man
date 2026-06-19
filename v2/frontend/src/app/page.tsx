@@ -594,7 +594,8 @@ export default function LandingPage() {
             <Home size={18} />
             <span className="text-[9px] font-medium tracking-wider uppercase">Home</span>
           </a>
-          {sections.slice(0, 3).map((sec) => {
+          {/* Render selected sections to fit perfectly on mobile screens */}
+          {sections.filter(s => ['clarity', 'presence', 'whats-inside', 'pricing'].includes(s.id)).map((sec) => {
             const Icon = sec.icon;
             return (
               <a key={sec.id} href={`#${sec.id}`} className="flex flex-col items-center gap-1 text-brand-gray hover:text-brand-gold transition-colors duration-200">

@@ -4,10 +4,9 @@ interface CheckoutModalProps {
   isOpen: boolean;
   onClose: () => void;
   launchPriceBdt: number;
-  launchPriceUsd: number;
 }
 
-export default function CheckoutModal({ isOpen, onClose, launchPriceBdt, launchPriceUsd }: CheckoutModalProps) {
+export default function CheckoutModal({ isOpen, onClose, launchPriceBdt }: CheckoutModalProps) {
   if (!isOpen) return null;
 
   return (
@@ -69,7 +68,7 @@ export default function CheckoutModal({ isOpen, onClose, launchPriceBdt, launchP
           <div className="bg-brand-navy/60 border border-brand-gold/10 p-4 rounded-xl flex justify-between items-center my-6">
             <div>
               <span className="text-xs text-brand-gray block">পরিশোধযোগ্য মূল্য</span>
-              <span className="text-lg font-bold text-brand-light">৳{launchPriceBdt} / ${launchPriceUsd}</span>
+              <span className="text-lg font-bold text-brand-light">৳{launchPriceBdt}</span>
             </div>
             <span className="text-xs font-bold text-brand-gold bg-brand-gold/10 px-2.5 py-1 rounded-full border border-brand-gold/20">
               ৫০% ছাড় অফার

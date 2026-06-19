@@ -15,8 +15,6 @@ export const BOOK_DATA = {
   tagline: "FIT • COLOR • PRESENCE",
   regularPriceBdt: 1000,
   launchPriceBdt: 490,
-  regularPriceUsd: 19.99,
-  launchPriceUsd: 9.99,
   isLaunchOffer: true,
 };
 

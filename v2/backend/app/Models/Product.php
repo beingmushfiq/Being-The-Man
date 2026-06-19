@@ -10,7 +10,6 @@ class Product extends Model
     protected $fillable = [
         'sku', 'title', 'slug', 'description', 
         'regular_price_bdt', 'launch_price_bdt', 
-        'regular_price_usd', 'launch_price_usd', 
         'is_launch_offer', 'cover_image', 'bonus_items'
     ];
 
@@ -19,8 +18,6 @@ class Product extends Model
         'bonus_items' => 'array',
         'regular_price_bdt' => 'decimal:2',
         'launch_price_bdt' => 'decimal:2',
-        'regular_price_usd' => 'decimal:2',
-        'launch_price_usd' => 'decimal:2',
     ];
 
     public function orders(): HasMany

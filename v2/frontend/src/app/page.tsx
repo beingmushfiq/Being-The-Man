@@ -173,7 +173,7 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
             {/* Left Before vs After Card */}
             <div className="lg:col-span-7 glass-panel p-6 md:p-8 rounded-2xl border border-brand-gold/15">
               <h3 className="text-lg font-semibold text-brand-gold mb-6 uppercase tracking-wider">
@@ -238,6 +238,17 @@ export default function LandingPage() {
               <div className="mt-4 border-l-2 border-brand-gold pl-4 text-sm italic text-brand-gold-light leading-relaxed">
                 “ভালো পোশাক মানে শুধু stylish হওয়া না। ভালো পোশাক মানে room-এ ঢুকেই respect gain করা।”
               </div>
+            </div>
+          </div>
+
+          {/* Visual Showcase Showcase Image with Proper Spacing */}
+          <div className="mt-16 mb-6 flex flex-col items-center">
+            <div className="w-full max-w-4xl rounded-2xl overflow-hidden border border-brand-gold/20 shadow-2xl shadow-brand-gold/5 bg-brand-dark/50 p-2 md:p-3">
+              <img 
+                src="/presence-showcase.jpg" 
+                alt="Presence Transformation Guide" 
+                className="w-full h-auto object-cover rounded-xl"
+              />
             </div>
           </div>
         </div>
@@ -498,10 +509,6 @@ export default function LandingPage() {
               <span className="text-lg text-brand-gray line-through">৳১,০০০</span>
               <h2 className="text-5xl font-bold text-brand-gold">৳{BOOK_DATA.launchPriceBdt}</h2>
             </div>
-            
-            <p className="text-xs text-brand-gray mb-8">
-              অথবা আন্তর্জাতিক কার্ডধারীদের জন্য মাত্র ${BOOK_DATA.launchPriceUsd} (Regular ${BOOK_DATA.regularPriceUsd})
-            </p>
 
             <div className="space-y-4">
               <button 
@@ -619,7 +626,6 @@ export default function LandingPage() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         launchPriceBdt={BOOK_DATA.launchPriceBdt}
-        launchPriceUsd={BOOK_DATA.launchPriceUsd}
       />
     </div>
   );

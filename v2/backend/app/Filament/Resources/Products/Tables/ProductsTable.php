@@ -29,12 +29,6 @@ class ProductsTable
                 TextColumn::make('launch_price_bdt')
                     ->numeric()
                     ->sortable(),
-                TextColumn::make('regular_price_usd')
-                    ->numeric()
-                    ->sortable(),
-                TextColumn::make('launch_price_usd')
-                    ->numeric()
-                    ->sortable(),
                 IconColumn::make('is_launch_offer')
                     ->boolean(),
                 ImageColumn::make('cover_image'),

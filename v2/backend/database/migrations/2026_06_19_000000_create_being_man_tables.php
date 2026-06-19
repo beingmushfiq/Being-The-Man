@@ -17,8 +17,6 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->decimal('regular_price_bdt', 10, 2);
             $table->decimal('launch_price_bdt', 10, 2);
-            $table->decimal('regular_price_usd', 10, 2);
-            $table->decimal('launch_price_usd', 10, 2);
             $table->boolean('is_launch_offer')->default(true);
             $table->string('cover_image')->nullable();
             $table->json('bonus_items')->nullable();

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Shield, ChevronDown, Check, Star, AlertCircle, ShoppingBag, Eye, TrendingUp, Compass, Award, Bookmark, ArrowRight, UserCheck } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Shield, ChevronDown, Check, Star, AlertCircle, ShoppingBag, Eye, TrendingUp, Compass, Award, Bookmark, UserCheck } from 'lucide-react';
 import CheckoutModal from '../components/CheckoutModal';
 import { supabase } from '../supabaseClient';
 
@@ -25,7 +25,7 @@ export default function LandingPage() {
           setProduct(data);
         }
       } catch (e) {
-        console.log('Using default product values.');
+        console.log('Using default product values.', e);
       }
     }
     fetchProduct();
@@ -745,56 +745,6 @@ const bottomNavIcon = {
   lineHeight: 1
 };
 
-// Presence Section
-const presenceSectionStyle = {
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  gap: '3rem',
-  alignItems: 'center',
-  marginTop: '5rem',
-  padding: '3rem',
-  background: 'rgba(212, 175, 55, 0.02)',
-  border: '1px solid rgba(212, 175, 55, 0.12)',
-  borderRadius: '16px'
-};
-
-const presenceTextCol = {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '0.5rem'
-};
-
-const presenceImageCol = {
-  position: 'relative',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  overflow: 'hidden',
-  borderRadius: '12px',
-  background: 'var(--color-bg-card)',
-  border: '1px solid var(--color-border)',
-  minHeight: '280px'
-};
-
-const presenceImageStyle = {
-  width: '80%',
-  maxWidth: '280px',
-  objectFit: 'contain',
-  filter: 'brightness(1.1) drop-shadow(0 0 20px rgba(212,175,55,0.2))'
-};
-
-const presenceImageOverlay = {
-  position: 'absolute',
-  bottom: '1rem',
-  left: '50%',
-  transform: 'translateX(-50%)',
-  background: 'rgba(5, 10, 24, 0.85)',
-  backdropFilter: 'blur(8px)',
-  padding: '0.4rem 1rem',
-  borderRadius: '20px',
-  border: '1px solid rgba(212, 175, 55, 0.2)',
-  whiteSpace: 'nowrap'
-};
 
 const heroSectionStyle = {
   background: 'radial-gradient(circle at 70% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 60%)',

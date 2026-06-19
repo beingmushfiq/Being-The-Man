@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -7,7 +7,56 @@ interface CheckoutModalProps {
 }
 
 export default function CheckoutModal({ isOpen, onClose, launchPriceBdt }: CheckoutModalProps) {
+  const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
   if (!isOpen) return null;
+
+  const handleCheckout = async () => {
+    if (!name || !phone) {
+      setError('দয়া করে আপনার নাম এবং হোয়াটসঅ্যাপ নম্বর দিন।');
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const orderId = `ORDER_${Date.now()}_${Math.random().toString(36).substring(7)}`;
+      
+      const response = await fetch('/api/checkout/bkash', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          amount: launchPriceBdt,
+          orderId,
+          name,
+          phone
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Payment initialization failed');
+      }
+
+      if (data && data.bkashURL) {
+        window.location.href = data.bkashURL;
+      } else {
+        throw new Error('Invalid payment gateway response');
+      }
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'An error occurred during checkout';
+      setError(errorMessage);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -43,6 +92,11 @@ export default function CheckoutModal({ isOpen, onClose, launchPriceBdt }: Check
 
         {/* Order Form Placeholder */}
         <div className="space-y-4">
+          {error && (
+            <div className="bg-red-500/10 border border-red-500/30 text-red-400 p-3 rounded-lg text-sm text-center">
+              {error}
+            </div>
+          )}
           <div>
             <label className="block text-xs font-semibold uppercase tracking-wider text-brand-gray mb-1">
               আপনার নাম
@@ -50,6 +104,8 @@ export default function CheckoutModal({ isOpen, onClose, launchPriceBdt }: Check
             <input 
               type="text" 
               placeholder="যেমন: আরিফ রহমান" 
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className="w-full bg-brand-dark/60 border border-brand-gold/20 focus:border-brand-gold rounded-lg px-4 py-3 text-sm focus:outline-none transition-colors text-brand-light"
             />
           </div>
@@ -60,6 +116,8 @@ export default function CheckoutModal({ isOpen, onClose, launchPriceBdt }: Check
             <input 
               type="tel" 
               placeholder="যেমন: 017XXXXXXXX" 
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
               className="w-full bg-brand-dark/60 border border-brand-gold/20 focus:border-brand-gold rounded-lg px-4 py-3 text-sm focus:outline-none transition-colors text-brand-light"
             />
           </div>
@@ -75,8 +133,12 @@ export default function CheckoutModal({ isOpen, onClose, launchPriceBdt }: Check
             </span>
           </div>
 
-          <button className="w-full bg-gold-gradient text-brand-dark font-bold py-4 rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-base shadow-lg shadow-brand-gold/10">
-            <span>💳 পেমেন্ট করতে এগিয়ে যান (bKash / Card)</span>
+          <button 
+            onClick={handleCheckout}
+            disabled={loading}
+            className="w-full bg-gold-gradient text-brand-dark font-bold py-4 rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2 text-base shadow-lg shadow-brand-gold/10 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <span>{loading ? 'অপেক্ষা করুন...' : '💳 পেমেন্ট করতে এগিয়ে যান (bKash)'}</span>
           </button>
 
           <p className="text-[11px] text-brand-gray text-center mt-4">

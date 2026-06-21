@@ -2,7 +2,7 @@
 
 <div align="center">
   <p align="center">
-    <img src="v2/frontend/public/logo.png" alt="Being The Man Logo" width="130" style="border-radius: 50%; box-shadow: 0px 8px 30px rgba(212, 175, 55, 0.35); border: 2px solid #D4AF37;" />
+    <img src="frontend/public/logo.png" alt="Being The Man Logo" width="130" style="border-radius: 50%; box-shadow: 0px 8px 30px rgba(212, 175, 55, 0.35); border: 2px solid #D4AF37;" />
   </p>
 
   <h1><b>Being The Man — Digital Publishing Ecosystem</b></h1>

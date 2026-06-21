@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Montserrat, Playfair_Display, Hind_Siliguri } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "./SmoothScrollProvider";
@@ -25,11 +25,30 @@ const hindSiliguri = Hind_Siliguri({
   display: "swap",
 });
 
+
+
+export const viewport: Viewport = {
+  themeColor: "#111827",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
 export const metadata: Metadata = {
   title: "Being The Man — The Silent Language of Style",
   description: "Confidence, Presence, Masculine Identity, Better First Impressions. self-presentation, and social status signaling for the modern man.",
   alternates: {
     canonical: "https://beingman.app",
+  },
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: "Being MAN",
+  },
+  formatDetection: {
+    telephone: false,
   },
 };
 

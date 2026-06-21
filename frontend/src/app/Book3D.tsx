@@ -120,7 +120,11 @@ export default function Book3D() {
     let isDragging = false;
     let previousMousePosition = { x: 0, y: 0 };
 
-    const handleMouseDown = () => { isDragging = true; };
+    const handleMouseDown = (e: MouseEvent) => {
+      isDragging = true;
+      previousMousePosition = { x: e.offsetX, y: e.offsetY };
+    };
+
     const handleMouseMove = (e: MouseEvent) => {
       const deltaMove = {
         x: e.offsetX - previousMousePosition.x,
@@ -137,11 +141,55 @@ export default function Book3D() {
         y: e.offsetY
       };
     };
-    const handleMouseUp = () => { isDragging = false; };
+
+    const handleMouseUp = () => {
+      isDragging = false;
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        const touch = e.touches[0];
+        const rect = renderer.domElement.getBoundingClientRect();
+        previousMousePosition = {
+          x: touch.clientX - rect.left,
+          y: touch.clientY - rect.top
+        };
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 1 && isDragging) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const rect = renderer.domElement.getBoundingClientRect();
+        const currentPosition = {
+          x: touch.clientX - rect.left,
+          y: touch.clientY - rect.top
+        };
+
+        const deltaMove = {
+          x: currentPosition.x - previousMousePosition.x,
+          y: currentPosition.y - previousMousePosition.y
+        };
+
+        book.rotation.y += deltaMove.x * 0.005;
+        book.rotation.x += deltaMove.y * 0.005;
+
+        previousMousePosition = currentPosition;
+      }
+    };
+
+    const handleTouchEnd = () => {
+      isDragging = false;
+    };
 
     const domElement = renderer.domElement;
     domElement.addEventListener('mousedown', handleMouseDown);
     domElement.addEventListener('mousemove', handleMouseMove);
+    domElement.addEventListener('touchstart', handleTouchStart, false);
+    domElement.addEventListener('touchmove', handleTouchMove, { passive: false });
+    domElement.addEventListener('touchend', handleTouchEnd);
     window.addEventListener('mouseup', handleMouseUp);
 
     // Animation Loop
@@ -173,6 +221,9 @@ export default function Book3D() {
       cancelAnimationFrame(animationFrameId);
       domElement.removeEventListener('mousedown', handleMouseDown);
       domElement.removeEventListener('mousemove', handleMouseMove);
+      domElement.removeEventListener('touchstart', handleTouchStart);
+      domElement.removeEventListener('touchmove', handleTouchMove);
+      domElement.removeEventListener('touchend', handleTouchEnd);
       window.removeEventListener('mouseup', handleMouseUp);
       window.removeEventListener('resize', handleResize);
       if (containerRef.current) {
@@ -183,9 +234,9 @@ export default function Book3D() {
   }, []);
 
   return (
-    <div className="relative w-full h-[400px] flex items-center justify-center cursor-grab active:cursor-grabbing">
-      <div ref={containerRef} className="w-[300px] h-[400px]" />
-      <div className="absolute bottom-4 text-center text-xs text-brand-gray tracking-wider uppercase select-none pointer-events-none bg-brand-dark/80 px-3 py-1 rounded-full border border-brand-gold/20">
+    <div className="relative w-full min-h-[300px] sm:h-[400px] md:h-[500px] flex items-center justify-center cursor-grab active:cursor-grabbing touch-none">
+      <div ref={containerRef} className="w-full h-full max-w-[400px] max-h-[500px]" />
+      <div className="absolute bottom-4 left-4 right-4 text-center text-xs sm:text-sm text-brand-gray tracking-wider uppercase select-none pointer-events-none bg-brand-dark/80 px-3 py-1 rounded-full border border-brand-gold/20">
         বইটি ঘুরিয়ে দেখতে ড্র্যাগ করুন
       </div>
     </div>
